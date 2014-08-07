@@ -89,6 +89,11 @@ class ISO3166::Country
       Data.map &blk
     end
 
+    def all_country_codes(&blk)
+      blk ||= Proc.new { |country,data| [data['country_codes']] }
+      Data.map &blk
+    end
+
     alias :countries :all
 
     def all_translated(locale='en')
